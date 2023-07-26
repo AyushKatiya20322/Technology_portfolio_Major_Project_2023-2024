@@ -8,7 +8,7 @@ import { setUserDetails } from './context/actions/userActions'
 import { fadeInOut } from './animations'
 import { getAllCartItems,validateUserJWTToken } from './api';
 import { motion } from 'framer-motion';
-import { CheckOutSuccess, MainLoader,UsersOrder } from './components';
+import { AboutUs, CheckOutSuccess, MachineLearning, MainLoader,Menu,UsersOrder } from './components';
 import  Alert  from './components/alert';
 import {useSelector} from 'react-redux/es/hooks/useSelector';
 import { setCartItems } from "./context/actions/cartAction";
@@ -53,6 +53,10 @@ import { setCartItems } from "./context/actions/cartAction";
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/checkout-success" element={<CheckOutSuccess />} />
         <Route path="/user-orders" element={<UsersOrder />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/services" element={<MachineLearning />} />
+        
       </Routes>
 {alert?.type && <Alert type={alert?.type} message={alert?.message}/>}
     </div>

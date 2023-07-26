@@ -3,8 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { Logo } from '../assets';
 import { HiCurrencyRupee } from '../assets/icons';
 import { isNotActiveStyles, isActiveStyles } from '../utils/styles';
+import { buttonClick } from '../animations';
+import {motion} from "framer-motion"
+import { useNavigate } from 'react-router-dom';
+
 
 const NavLinkItem = ({ to, icon, label }) => {
+
+
   return (
     <NavLink
       isActive={(_, location) => location.pathname === to}
@@ -20,6 +26,10 @@ const NavLinkItem = ({ to, icon, label }) => {
 };
 
 const DBLeftSection = () => {
+  const navigate = useNavigate();  
+const Aboutus= () =>{
+  navigate('/aboutus');
+}
   return (
     <div className="h-full flex flex-col bg-lightOverlay backdrop-blur-md shadow-md min-w-210 w-300 gap-3">
       <NavLink to="/" className="flex items-center justify-center px-6 py-2 gap-4">
@@ -44,9 +54,9 @@ const DBLeftSection = () => {
           <p className="text-base text-gray-300 text-center">
             Having trouble with the website? Please contact us for more questions.
           </p>
-          <p className="px-4 py-2 rounded-full bg-primary text-red-400 cursor-pointer m-2">
+          <motion.div {...buttonClick} onClick={Aboutus} className="px-4 py-2 rounded-full bg-primary text-red-400 cursor-pointer m-2"  >
             Get in touch
-          </p>
+          </motion.div>
         </div>
       </div>
     </div>
