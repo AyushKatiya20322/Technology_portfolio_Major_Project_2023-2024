@@ -12,46 +12,38 @@ const SliderCard = ({ data, index }) => {
   const dispatch = useDispatch();
 
   const sendToCart = () => {
+    dispatch(alertSuccess("Added to the cart"));
     addNewItemToCart(user?.user_id, data).then((res) => {
       getAllCartItems(user?.user_id).then((items) => {
         dispatch(setCartItems(items));
-        dispatch(alertSuccess("Added to the cart"));
-        setTimeout(() => {
-          dispatch(alertNULL());
-        }, 3000);
       });
+      setInterval(() => {
+        dispatch(alertNULL());
+      }, 3000);
     });
   };
 
   return (
-    <motion.div
-      {...buttonClick}
-      onClick={sendToCart}
-      className="bg-lightOverlay hover:drop-shadow-lg backdrop-blur-md rounded-xl p-4 w-full md:w-340 md:min-w-350 gap-3 cursor-pointer"
-    >
-      <img
-        src={data.imageURL}
-        className="w-40 h-40 object-contain"
-        alt={data.product_name}
-      />
-      <div className="pt-4">
+    <div className="bg-lightOverlay hover:drop-shadow-lg backdrop-blur-md rounded-xl flex items-center justify-between relative px-4 py-2 w-full md:w-340 md:min-w-350 gap-3">
+      <img src={data.imageURL} className="w-40 h-40 object-contain" alt="" />
+      <div className="relative pt-12">
         <p className="text-xl text-headingColor font-semibold">
           {data.product_name}
         </p>
-        <p className="text-lg font-semibold text-red-500 flex items-center gap-1">
+        <p className="text-lg font-semibold text-red-500 flex items-center justify-center gap-1">
           <HiCurrencyRupee className="text-red-500" />{" "}
           {parseFloat(data.product_price).toFixed(2)}
         </p>
+
+        <motion.div
+          {...buttonClick}
+          onClick={sendToCart}
+          className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center absolute -top-4 right-2 cursor-pointer"
+        >
+          <IoBasket className="text-2xl text-primary" />
+        </motion.div>
       </div>
-      <motion.div
-        className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center absolute -top-4 right-2"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0 }}
-      >
-        <IoBasket className="text-2xl text-primary" />
-      </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -58,7 +58,7 @@ const Cart = () => {
         exit={{ opacity: 0 }}
         className="fixed z-50 top-0 right-0 w-300 md:w-508 bg-lightOverlay backdrop-blur-md shadow-md h-screen overflow-y-auto"
       >
-        <div className="w-full flex items-center justify-between py-4 pb-12 px-6">
+        <div className="w-full flex items-center justify-between py-4 pb-6 px-4">
           <motion.i
             {...buttonClick}
             className="cursor-pointer"
@@ -72,7 +72,7 @@ const Cart = () => {
           </motion.i>
         </div>
 
-        <div className="flex-1 flex flex-col items-start justify-start rounded-t-3xl bg-zinc-900 h-full py-6 gap-3 relative">
+        <div className="flex-1 flex flex-col items-start justify-start rounded-t-3xl bg-zinc-900 h-650 py-6 gap-3 relative">
           {cart && cart?.length > 0 ? (
             <>
               <div className="flex flex-col w-full items-start justify-start gap-3 h-[65%] overflow-y-scroll scrollbar-none px-4">
@@ -82,7 +82,7 @@ const Cart = () => {
                     <CartItemCard key={i} index={i} data={item} />
                   ))}
               </div>
-              <div className="bg-zinc-800 rounded-t-[60px] w-full h-[35%] flex flex-col items-center justify-center px-4 py-6 gap-24">
+              <div className="bg-zinc-800 rounded-t-[60px] w-full h-[35%] flex flex-col items-center justify-center px-4 py-6 gap-12">
                 <div className="w-full flex items-center justify-evenly">
                   <p className="text-3xl text-zinc-500 font-semibold">Total</p>
                   <p className="text-3xl text-orange-500 font-semibold flex items-center justify-center gap-1">
@@ -104,7 +104,7 @@ const Cart = () => {
             </>
           ) : (
             <>
-              <h1 className="px-4 text-3xl text-primary font-bold">Empty Cart</h1>
+              <h1 className="px-28 py-52 text-5xl text-primary font-bold">Empty Cart</h1>
             </>
           )}
         </div>
@@ -131,7 +131,7 @@ export const CartItemCard = ({ index, data }) => {
   };
 
   const incrementCart = (productId) => {
-    dispatch(alertSuccess("Updated the cartitem"));
+    dispatch(alertSuccess("Updated the cart item"));
     increaseItemQuantity(user?.user_id, productId, "increment").then((data) => {
       getAllCartItems(user?.user_id).then((items) => {
         dispatch(setCartItems(items));

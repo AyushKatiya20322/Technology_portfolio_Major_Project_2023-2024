@@ -8,9 +8,8 @@ import { Spinner } from "../components";
 const DBOrders = () => {
   const orders = useSelector((state) => state.orders);
   const dispatch = useDispatch();
-  const isLoading = !orders;
+  const isLoading = !orders; // Determine if data is still loading
 
-  
   useEffect(() => {
     if (!orders) {
       getAllOrder()

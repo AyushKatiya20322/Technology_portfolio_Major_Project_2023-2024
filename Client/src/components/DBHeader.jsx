@@ -1,7 +1,9 @@
-import React from 'react';
+
+import React, { useState} from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { BsFillBellFill, BsToggles2, MdLogout, MdSearch } from '../assets/icons';
-import { buttonClick, fadeInOut } from '../animations';
+import { SiHomebridge, BsToggles2, MdLogout, MdSearch } from '../assets/icons';
+import { buttonClick, fadeInOut , slideTop} from '../animations';
 import { motion } from 'framer-motion';
 import { Avatar } from '../assets';
 import { getAuth } from 'firebase/auth';
@@ -9,10 +11,14 @@ import { useNavigate } from 'react-router-dom';
 import { app } from '../config/firebase.config';
 import { setUserNull } from '../context/actions/userActions';
 
+
+
 const DBHeader = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   const firebaseAuth = getAuth(app);
   const signOut = () => {
@@ -24,6 +30,13 @@ const DBHeader = () => {
       })
       .catch((err) => console.log(err));
   };
+  
+  const Home = () => {
+        navigate('/mainpage', { replace: true });
+      }
+     
+  
+  
 
   return (
     <motion.div
@@ -78,10 +91,19 @@ const DBHeader = () => {
           whileHover={{ scale: 1.2, rotate: 10 }}
           whileTap={{ scale: 0.8, rotate: -10 }}
         >
-          <BsFillBellFill className="text-gray-400 text-xl" />
+          <SiHomebridge className="text-gray-400 text-xl"onClick={Home} />
         </motion.div>
 
         <div className="flex items-center justify-center gap-2">
+          
+
+          {user ? (
+          <div
+            className="relative cursor-pointer"
+            onMouseEnter={() => setIsMenuOpen(true)}
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
+           <div className="flex items-center justify-center gap-2">
           <motion.div
             className="w-10 h-10 rounded-md shadow-md cursor-pointer overflow-hidden"
             whileHover={{ scale: 1.2, rotate: 5 }}
@@ -93,6 +115,35 @@ const DBHeader = () => {
               referrerPolicy="no-referrer"
             />
           </motion.div>
+            </div>
+            {isMenuOpen && (
+              <motion.div
+                {...slideTop}
+                className="z-50 px-6 py-4 w-48 bg-white backdrop-blur-md rounded-md shadow-md absolute top-12 right-0 flex flex-col gap-4"
+              >
+                
+             
+                <Link
+                  className="hover:text-red-500 text-xl text-textColor"
+                  to="/user-orders"
+                >
+                  Orders
+                </Link>
+                <hr />
+               
+              </motion.div>
+            )}
+          </div>
+        ) : (
+          <NavLink to="/login">
+            <motion.button
+              {...buttonClick}
+              className="px-4 py-4 rounded-md shadow-md bg-lightOverlay border border-red-300 cursor-pointer"
+            >
+              Login
+            </motion.button>
+          </NavLink>
+        )}
           <motion.div
             onClick={signOut}
             {...buttonClick}

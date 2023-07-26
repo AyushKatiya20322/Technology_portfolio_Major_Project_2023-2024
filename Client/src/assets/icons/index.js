@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import {FcGoogle, FcClearFilters} from "react-icons/fc";
 import { MdClose } from "react-icons/md";
-
+import {SiHomebridge} from "react-icons/si";
 import {MdShoppingCart, MdLogout, MdSearch, MdDelete} from "react-icons/md";
 import {
     BsToggles2,
@@ -41,6 +41,8 @@ export{
     HiCurrencyRupee,
     IoSearch,
     MdClose,
-    MdMenu
+    MdMenu,
+    SiHomebridge
 
 };
+

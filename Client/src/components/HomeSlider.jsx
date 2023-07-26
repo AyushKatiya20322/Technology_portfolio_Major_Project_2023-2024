@@ -42,15 +42,7 @@ const HomeSlider = () => {
         </div>
       </div>
 
-      <motion.div
-        className="relative w-full overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Slider ref={sliderRef} slideData={sliderData} activeSlide={slideIndex} />
-      </motion.div>
+      <Slider ref={sliderRef} slideData={sliderData} activeSlide={slideIndex} />
 
       {/* Navigation Buttons */}
       <motion.div
@@ -59,22 +51,18 @@ const HomeSlider = () => {
         animate="visible"
         variants={buttonClick}
       >
-        <motion.button
+        <button
           className="rounded-full p-2 mr-2 bg-primary text-white hover:bg-orange-500 transition-colors duration-300"
           onClick={handlePrevSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
         >
           <IoIosArrowBack className="text-2xl" />
-        </motion.button>
-        <motion.button
+        </button>
+        <button
           className="rounded-full p-2 bg-primary text-white hover:bg-orange-500 transition-colors duration-300"
           onClick={handleNextSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
         >
           <IoIosArrowForward className="text-2xl" />
-        </motion.button>
+        </button>
       </motion.div>
     </motion.div>
   );

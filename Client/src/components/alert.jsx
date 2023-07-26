@@ -10,7 +10,7 @@ const Alert = ({ type, message }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       handleClose();
-    }, 5000); // Auto-close the alert after 5 seconds
+    }, 2000); // Auto-close the alert after 5 seconds
 
     return () => clearTimeout(timer);
   }, []);

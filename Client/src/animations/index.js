@@ -72,8 +72,6 @@ export const slideIn = {
 
 
 
-
-
 export const fadeIn = ({ children }) => {
   const fadeInVariants = {
     hidden: { opacity: 0 },

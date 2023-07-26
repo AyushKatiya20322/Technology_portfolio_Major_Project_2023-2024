@@ -77,10 +77,10 @@ const DBUsers = () => {
           title="List of Users"
         />
       ) : (
-        // Show a loading indicator while fetching data
+        // Show a custom loading message with a spinner
         <div className="flex items-center justify-center gap-2">
           <Spinner />
-          <p>Loading users...</p>
+          <p className="text-headingColor font-semibold">Loading users...</p>
         </div>
       )}
     </div>

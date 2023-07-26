@@ -9,14 +9,12 @@ import { useDispatch } from "react-redux";
 const OrderData = ({ index, data, admin }) => {
   const dispatch = useDispatch();
 
-  const handleClick = async (orderId, sts) => {
-    try {
-      await updateOrderSts(orderId, sts);
-      const updatedOrders = await getAllOrder();
-      dispatch(setOrders(updatedOrders));
-    } catch (error) {
-      console.error("Error updating order status:", error);
-    }
+  const handleClick = (orderId, sts) => {
+    updateOrderSts(orderId, sts).then((response) => {
+      getAllOrder().then((data) => {
+        dispatch(setOrders(data));
+      });
+    });
   };
 
   return (
