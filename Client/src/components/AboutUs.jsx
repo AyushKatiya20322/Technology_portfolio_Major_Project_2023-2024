@@ -21,11 +21,7 @@ const teamMembers = [
     role: "CTO",
     image: Avatar, // Correct image path for Aakash
   },
-  {
-    name: "John Doe",
-    role: "Lead Developer",
-    image: Avatar, // Correct image path for John
-  },
+  
 ];
 const AboutUs = () => {
 
