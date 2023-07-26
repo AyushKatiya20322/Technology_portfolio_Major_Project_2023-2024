@@ -72,7 +72,7 @@ const Cart = () => {
           </motion.i>
         </div>
 
-        <div className="flex-1 flex flex-col items-start justify-start rounded-t-3xl bg-zinc-900 h-650 py-6 gap-3 relative">
+        <div className="flex-1 flex flex-col items-start justify-start rounded-t-3xl bg-zinc-900 h-650  gap-3 relative">
           {cart && cart?.length > 0 ? (
             <>
               <div className="flex flex-col w-full items-start justify-start gap-3 h-[65%] overflow-y-scroll scrollbar-none px-4">
@@ -104,7 +104,7 @@ const Cart = () => {
             </>
           ) : (
             <>
-              <h1 className="px-28 py-52 text-5xl text-primary font-bold">Empty Cart</h1>
+              <h1 className="px-32 py-64 text-5xl text-primary font-bold">Empty Cart</h1>
             </>
           )}
         </div>

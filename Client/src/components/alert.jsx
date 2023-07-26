@@ -10,7 +10,7 @@ const Alert = ({ type, message }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       handleClose();
-    }, 2000); // Auto-close the alert after 5 seconds
+    }, 5000); // Auto-close the alert after 5 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -44,7 +44,7 @@ const Alert = ({ type, message }) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className={`fixed z-50 top-32 right-12 px-4 py-2 rounded-md backdrop-blur-sm bg-${color}-300 shadow-md flex items-center gap-4 pl-6`}
+          className={`fixed z-50 top-8 items-center px-4 py-2 rounded-md backdrop-blur-sm bg-${color}-300 shadow-md flex items-center gap-4 pl-6`}
         >
           {icon}
           <p className={`text-xl text-${color}-700`}>{message}</p>

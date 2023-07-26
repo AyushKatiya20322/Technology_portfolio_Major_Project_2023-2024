@@ -119,12 +119,12 @@ const DBHeader = () => {
             {isMenuOpen && (
               <motion.div
                 {...slideTop}
-                className="z-50 px-6 py-4 w-48 bg-white backdrop-blur-md rounded-md shadow-md absolute top-12 right-0 flex flex-col gap-4"
+                className="z-50 px-2 py-2 w-28 bg-white backdrop-blur-md rounded-md shadow-md absolute top-12 right-0 flex flex-col gap-4"
               >
                 
              
                 <Link
-                  className="hover:text-red-500 text-xl text-textColor"
+                  className="text-center items-center  hover:text-red-500 text-xl text-textColor"
                   to="/user-orders"
                 >
                   Orders
