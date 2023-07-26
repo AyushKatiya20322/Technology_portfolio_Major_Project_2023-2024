@@ -129,7 +129,7 @@ const DBHeader = () => {
                 >
                   Orders
                 </Link>
-                <hr />
+                
                
               </motion.div>
             )}

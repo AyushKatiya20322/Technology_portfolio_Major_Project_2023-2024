@@ -2,7 +2,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { buttonClick, fadeInOut, slideIn, staggerFadeInOut } from "../animations";
+import { buttonClick, slideIn, staggerFadeInOut } from "../animations";
 import { baseURL, getAllCartItems, increaseItemQuantity } from "../api";
 import {
   BiChevronsRight,
