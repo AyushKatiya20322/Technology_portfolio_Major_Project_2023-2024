@@ -27,7 +27,9 @@ const MachineLearning = () => {
   return (
     <main className="w-screen min-h-screen flex items-center justify-start flex-col bg-primary">
       <Header />
-      
+      <p className="text-9xl items-center justify-center pt-80">
+        hello
+        </p>
       {isCart && <Cart />}
     </main>
   );
