@@ -4,14 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllProducts } from "../api";
 import { setAllProducts } from "../context/actions/productActions";
 import Avatar from "../assets/img/avatar.png";
+import Aakash from "../assets/img/aakash.png"
 import { Box, Container, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 import { TextField, Button } from "@mui/material";
 import { slideTop, fadeInOut, staggerFadeInOut } from "../animations";
 import Testimonial from "../components/Testimonial";
-import { Cart, Header, Services, ContactForm } from "../components";
+import { Cart, Header, Services, ContactForm ,Footer} from "../components";
 import { FiMail, FiPhone } from "react-icons/fi";
 import { AiOutlineTeam } from "react-icons/ai";
+
 
 const customStyles = {
   sectionTitle: "text-4xl font-bold mb-6",
@@ -49,7 +51,7 @@ const teamMembers = [
   {
     name: "Aakash Rathod",
     role: "CTO",
-    image: Avatar,
+    image: Aakash,
   },
 ];
 
@@ -212,6 +214,8 @@ const AboutUs = () => {
         </motion.section>
         <hr className="my-6 border-t-2 border-gray-300" />
         <ContactForm />
+        <hr className="my-6 border-t-2 border-gray-300" />
+        <Footer/>
         <hr className="my-6 border-t-2 border-gray-300" />
       </Container>
       {isCart && <Cart />}

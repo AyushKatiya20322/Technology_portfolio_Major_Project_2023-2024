@@ -5,6 +5,7 @@ import { Delivery, HeroBg } from "../assets";
 import { randomData } from "../utils/styles";
 import { useNavigate } from 'react-router-dom';
 
+
 const Home = () => {
   const navigate = useNavigate(); 
   const Menu= () =>{
@@ -80,7 +81,9 @@ const Home = () => {
             ))}
         </div>
       </div>
+    
     </motion.div>
+    
   );
 };
 

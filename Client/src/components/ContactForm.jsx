@@ -1,14 +1,54 @@
-// components/ContactForm.js
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Typography, TextField, Button } from "@mui/material";
+import { Typography, TextField, Button, Snackbar } from "@mui/material";
+import { Alert } from "@mui/material";
 import { slideTop, fadeInOut } from "../animations";
 
 const ContactForm = () => {
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Implement the form submission logic here
-    // You can use form data and send it to a backend server using API calls
+
+    // Form validation: Check if required fields are filled
+    if (!formData.name || !formData.email) {
+      setSnackbarMessage("Please fill in all required fields.");
+      setSnackbarSeverity("error");
+      setShowSnackbar(true);
+    } else {
+      setIsSubmitting(true);
+      // Simulate API call delay with setTimeout (replace with actual API call)
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Form submission success
+      setSnackbarMessage("Form submitted successfully!");
+      setSnackbarSeverity("success");
+      setShowSnackbar(true);
+      resetForm();
+      setIsSubmitting(false);
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -33,7 +73,11 @@ const ContactForm = () => {
             fullWidth
             required
             margin="normal"
-            // Add appropriate state and event handlers to capture user input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            error={!formData.name} // Show error state if name is not filled
+            helperText={!formData.name ? "Name is required." : ""}
           />
           <TextField
             label="Email"
@@ -41,7 +85,11 @@ const ContactForm = () => {
             fullWidth
             required
             margin="normal"
-            // Add appropriate state and event handlers to capture user input
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={!formData.email} // Show error state if email is not filled
+            helperText={!formData.email ? "Email is required." : ""}
           />
           <TextField
             label="Message"
@@ -51,12 +99,29 @@ const ContactForm = () => {
             rows={4}
             required
             margin="normal"
-            // Add appropriate state and event handlers to capture user input
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
           />
-          <Button type="submit" variant="contained" color="primary">
-            Submit
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </form>
+        <Snackbar
+          open={showSnackbar}
+          autoHideDuration={4000}
+          onClose={() => setShowSnackbar(false)}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }} // Adjust snackbar position
+        >
+          <Alert onClose={() => setShowSnackbar(false)} severity={snackbarSeverity}>
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </motion.div>
     </motion.div>
   );

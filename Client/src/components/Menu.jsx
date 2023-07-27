@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../api";
 import { Cart, FilterSection, Header, HomeSlider } from "../components";
 import { setAllProducts } from "../context/actions/productActions";
+import { Box, Container, Typography } from "@mui/material";
+import {Footer} from "../components"
 
 const Main = () => {
   const products = useSelector((state) => state.products);
@@ -32,6 +34,11 @@ const Main = () => {
         <HomeSlider />
         <FilterSection />
       </div>
+      <Container maxWidth="lg">
+      <hr className="my-6 border-t-2 border-gray-300" />
+        <Footer/>
+        <hr className="my-6 border-t-2 border-gray-300" />
+        </Container>
       {isCart && <Cart />}
     </main>
   );

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../api";
 import { Cart, FilterSection, Header, Home, HomeSlider } from "../components";
 import { setAllProducts } from "../context/actions/productActions";
+import { Footer } from "../components";
+import { Box, Container, Typography } from "@mui/material";
+
 
 const Main = () => {
   const products = useSelector((state) => state.products);
@@ -25,13 +28,18 @@ const Main = () => {
   };
 
   return (
-    <main className="w-screen min-h-screen flex items-center justify-start flex-col bg-primary">
+    <main className="w-screen min-h-screen flex flex-col items-center justify-start bg-primary">
       <Header />
       <div className="w-full flex flex-col items-start justify-center mt-32 px-6 md:px-2 2xl:px-20 gap-12 pb-24">
         <Home />
         <HomeSlider />
         <FilterSection />
       </div>
+      <Container maxWidth="lg">
+      <hr className="my-6 border-t-2 border-gray-300" />
+        <Footer/>
+        <hr className="my-6 border-t-2 border-gray-300" />
+        </Container>
       {isCart && <Cart />}
     </main>
   );
