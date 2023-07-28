@@ -1,4 +1,3 @@
-// components/Services.js
 import React from "react";
 import { motion } from "framer-motion";
 import { Typography } from "@mui/material";
@@ -29,21 +28,21 @@ const Services = () => {
       exit="exit"
     >
       <motion.div className="inner-container" variants={fadeInOut}>
-        <Typography variant="h2" gutterBottom>
-          Our Services
-        </Typography>
+        
         <div className="services-container">
           {servicesData.map((service, index) => (
             <motion.div
               key={index}
-              className="service-item"
+              className="service-item p-4 rounded-lg border border-gray-300 shadow-md"
               variants={fadeInOut}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}
             >
-              <Typography variant="h4" gutterBottom>
+              <Typography variant="h4" gutterBottom style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
                 {service.title}
               </Typography>
-              <Typography variant="body1">{service.description}</Typography>
+              <Typography variant="body1" style={{ fontSize: "1.125rem" }}>
+                {service.description}
+              </Typography>
             </motion.div>
           ))}
         </div>
