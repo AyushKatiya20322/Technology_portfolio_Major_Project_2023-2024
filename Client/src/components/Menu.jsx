@@ -6,7 +6,7 @@ import { setAllProducts } from "../context/actions/productActions";
 import { Box, Container, Typography } from "@mui/material";
 import {Footer} from "../components"
 
-const Main = () => {
+const Menu = () => {
   const products = useSelector((state) => state.products);
   const isCart = useSelector((state) => state.isCart);
   const dispatch = useDispatch();
@@ -44,4 +44,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Menu;
