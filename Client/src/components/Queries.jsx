@@ -78,8 +78,8 @@ const QueriesForm = () => {
   };
 
   return (
-    <motion.div
-      className="content-container mt-10 pt-24"
+    <motion.div 
+      className="content-container mt-10 pt-24 "
       variants={slideTop}
       initial="initial"
       animate="animate"

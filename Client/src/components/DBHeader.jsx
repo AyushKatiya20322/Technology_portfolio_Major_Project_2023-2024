@@ -129,6 +129,13 @@ const DBHeader = () => {
                 >
                   Orders
                 </Link>
+
+                <Link
+                  className="text-center items-center  hover:text-red-500 text-xl text-textColor"
+                  to="/queries"
+                >
+                  Queries
+                </Link>
                 
                
               </motion.div>

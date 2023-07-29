@@ -75,7 +75,7 @@ const AboutUs = () => {
   }, [products]);
 
   return (
-    <motion.main className="w-full pt-20">
+    <motion.main className="w-full pt-20 bg-primary">
       <Header />
       <Container maxWidth="lg">
         {/* About Us Section */}

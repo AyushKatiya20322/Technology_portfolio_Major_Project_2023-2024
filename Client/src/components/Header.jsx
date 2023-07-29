@@ -120,6 +120,12 @@ const Header = () => {
     </Link>
   </>
 )}
+<Link
+                  className="hover:text-red-500 text-xl text-textColor"
+                  to="/prediction"
+                >
+                  Prediction
+                </Link>
                 <Link
                   className="hover:text-red-500 text-xl text-textColor"
                   to="/profile"
