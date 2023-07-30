@@ -124,7 +124,7 @@ const Header = () => {
                   className="hover:text-red-500 text-xl text-textColor"
                   to="/prediction"
                 >
-                  Prediction
+                  Prediction(BETA)
                 </Link>
                 <Link
                   className="hover:text-red-500 text-xl text-textColor"
